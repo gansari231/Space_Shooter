@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Enemy : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private GameObject _laserPrefab;
     private bool _isDead;
+
+    public static Action onDeath;
 
     void Start()
     {
@@ -40,7 +43,7 @@ public class Enemy : MonoBehaviour
 
         if(Time.time > _canFire && !_isDead)
         {
-            _fireRate = Random.Range(3.0f, 7.0f);
+            _fireRate = UnityEngine.Random.Range(3.0f, 7.0f);
             _canFire = Time.time + _fireRate;
             GameObject _enemyLaser = Instantiate(_laserPrefab, (transform.position + new Vector3(0 , -0.7f, 0)), Quaternion.identity);
             Laser[] _lasers = _enemyLaser.GetComponentsInChildren<Laser>();
@@ -58,7 +61,7 @@ public class Enemy : MonoBehaviour
 
         if (transform.position.y <= -5)
         {
-            float randomX = Random.Range(-xSpawnPos, xSpawnPos);
+            float randomX = UnityEngine.Random.Range(-xSpawnPos, xSpawnPos);
             transform.position = new Vector3(randomX, 7.5f, 0);
         }
     }
@@ -67,6 +70,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.GetComponent<PlayerView>())
         {
+            onDeath();
             PlayerView player = other.transform.GetComponent<PlayerView>();
             if (player != null)
             {
@@ -80,7 +84,7 @@ public class Enemy : MonoBehaviour
 
         if(other.CompareTag("Laser"))
         {
-            //++Laser.laserCounter;
+            onDeath();
             other.gameObject.SetActive(false);
             _playerView._playerController.AddScore(10);
             _enemyDestroyedAnim.SetTrigger("OnEnemyDeath");

@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class UIManager : SingletonGeneric<UIManager>
 {
@@ -19,6 +20,8 @@ public class UIManager : SingletonGeneric<UIManager>
     private Text _achievementInfo;
     [SerializeField]
     private CanvasRenderer _achievementPanel;
+    [SerializeField]
+    private TextMeshProUGUI _waveNumberText;
 
 
     [SerializeField]
@@ -62,6 +65,18 @@ public class UIManager : SingletonGeneric<UIManager>
         _tempScore = _scoreToAdd;
     }
 
+    public void UpdateWavetext(int waveNumber)
+    {
+        _waveNumberText.text = "Wave " + waveNumber;
+        _waveNumberText.gameObject.SetActive(true);
+        StartCoroutine(DisableWavetext());
+    }
+
+    IEnumerator DisableWavetext()
+    {
+        yield return new WaitForSeconds(3.0f);
+        _waveNumberText.gameObject.SetActive(false);
+    }
     public void UpdateHighScore()
     {
         if (_tempScore > _highScore)
