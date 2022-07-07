@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
+public class MainMenu : SingletonGeneric<MainMenu>
 {
     public void Load_Single_Player()
     {
         SceneManager.LoadScene(1);
     }
 
-    public void Load_Multi_Player()
+    public void Quit_Game()
     {
-        SceneManager.LoadScene(2);
+        Application.Quit();
     }
 }
