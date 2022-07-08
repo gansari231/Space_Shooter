@@ -14,6 +14,8 @@ public class PlayerView : MonoBehaviour
     public GameObject _rightWing;
     [SerializeField]
     public GameObject _leftWing;
+    [SerializeField]
+    GameObject _projectile;
 
     public PlayerController _playerController;
 
@@ -74,5 +76,12 @@ public class PlayerView : MonoBehaviour
         Laser.transform.position = this.transform.position;
         Laser.transform.rotation = this.transform.rotation;
         Laser.SetActive(true);
+    }
+
+    public void SpawnProjectile()
+    {
+        _projectile.transform.position = this.transform.position;
+        _projectile.transform.rotation = this.transform.rotation;
+        Instantiate(_projectile);
     }
 }

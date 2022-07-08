@@ -51,6 +51,10 @@ public class PlayerController
         {
             PlayerOneFireLaser();          
         }
+        if(Input.GetKeyDown(KeyCode.C))
+        {
+            _playerView.SpawnProjectile();
+        }
     }
 
     public void SetPlayerBounds()

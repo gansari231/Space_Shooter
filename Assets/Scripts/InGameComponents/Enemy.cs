@@ -94,5 +94,17 @@ public class Enemy : MonoBehaviour
             _isDead = true;
             Destroy(this.gameObject, 2.4f);
         }
+
+        if (other.CompareTag("Missile"))
+        {
+            onDeath();
+            _playerView._playerController.AddScore(10);
+            _enemyDestroyedAnim.SetTrigger("OnEnemyDeath");
+            _speed = 0;
+            _enemyExplosionAudio.Play();
+            Destroy(GetComponent<Collider2D>());
+            _isDead = true;
+            Destroy(this.gameObject, 2.4f);
+        }
     }
 }
