@@ -8,12 +8,13 @@ public class Wave
 {
     public int enemyCount;
     public float timeBetweenSpawns;
+    public GameObject _enemyPrefabs;
 }
 
 public class SpawnManager : SingletonGeneric<SpawnManager>
 {
     [SerializeField]
-    private Enemy _enemyPrefab;
+    private GameObject _enemyPrefab;
     [SerializeField]
     private GameObject _enemyContainer;
     [SerializeField]
@@ -48,7 +49,7 @@ public class SpawnManager : SingletonGeneric<SpawnManager>
         enemiesRemainingToSpawn--;
         nextSpawnTime = Time.time + currentWave.timeBetweenSpawns;
         Vector3 posToSpawn = new Vector3(UnityEngine.Random.Range(-8.5f, 8.5f), 7.5f, 0);
-        Enemy newEnemy = Instantiate(_enemyPrefab, posToSpawn, Quaternion.identity);
+        GameObject newEnemy = Instantiate(currentWave._enemyPrefabs, posToSpawn, Quaternion.identity);
         newEnemy.transform.parent = _enemyContainer.transform;
         Enemy.onDeath = OnEnemyDeath;
     }

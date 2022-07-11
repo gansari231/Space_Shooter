@@ -1097,7 +1097,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74233d1e941da464880da2a77ae8b5a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPrefab: {fileID: 1523580, guid: 3fc12f5350d9ace45b6dcc8eead48eea, type: 3}
+  _enemyPrefab: {fileID: 0}
   _enemyContainer: {fileID: 1623340437}
   _powerups:
   - {fileID: 402643870098793586, guid: 7c9f9afdbd5ee0a4ab85e1bdf317d9c6, type: 3}
@@ -1106,14 +1106,13 @@ MonoBehaviour:
   waves:
   - enemyCount: 1
     timeBetweenSpawns: 5
+    _enemyPrefabs: {fileID: 3806490403248954226, guid: 3fc12f5350d9ace45b6dcc8eead48eea, type: 3}
   - enemyCount: 2
     timeBetweenSpawns: 5
+    _enemyPrefabs: {fileID: 3806490403248954226, guid: 3fc12f5350d9ace45b6dcc8eead48eea, type: 3}
   - enemyCount: 3
     timeBetweenSpawns: 5
-  - enemyCount: 4
-    timeBetweenSpawns: 5
-  - enemyCount: 5
-    timeBetweenSpawns: 5
+    _enemyPrefabs: {fileID: 3806490403248954226, guid: 3fc12f5350d9ace45b6dcc8eead48eea, type: 3}
 --- !u!1 &595988327
 GameObject:
   m_ObjectHideFlags: 0
