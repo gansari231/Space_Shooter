@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Fireball : MonoBehaviour
 {
-    float _moveSpeed = 7f;
+    float _moveSpeed = 3f;
     public Vector3 fireBallDirection = new Vector3(0, 0, -1);
     
     void Start()

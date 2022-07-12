@@ -1106,7 +1106,7 @@ MonoBehaviour:
   waves:
   - enemyCount: 1
     timeBetweenSpawns: 5
-    _enemyPrefabs: {fileID: 3806490403248954226, guid: 3fc12f5350d9ace45b6dcc8eead48eea, type: 3}
+    _enemyPrefabs: {fileID: 2693017253588222652, guid: 819575f33c3202c479292830129fcc35, type: 3}
   - enemyCount: 2
     timeBetweenSpawns: 5
     _enemyPrefabs: {fileID: 3806490403248954226, guid: 3fc12f5350d9ace45b6dcc8eead48eea, type: 3}

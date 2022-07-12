@@ -17,8 +17,11 @@ public class BossGun : MonoBehaviour
 
     public void Shoot()
     {
-        fireball = _fireBall.GetComponent<Fireball>();
-        fireball.fireBallDirection = _direction;
-        GameObject newFireBallObj = Instantiate(_fireBall.gameObject, transform.position, Quaternion.identity);     
+        if(Boss.Instance.transform.position.y == 4.0f)
+        {
+            GameObject newFireBallObj = Instantiate(_fireBall.gameObject, transform.position, Quaternion.identity);
+            fireball = newFireBallObj.GetComponent<Fireball>();
+            fireball.fireBallDirection = _direction;
+        }          
     }
 }

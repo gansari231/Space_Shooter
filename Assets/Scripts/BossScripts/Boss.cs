@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss : MonoBehaviour
+public class Boss : SingletonGeneric<Boss>
 {
     BossGun[] _guns;
     float _canFire = -1;
-    float _fireRate = 0.5f;
+    float _fireRate = 2.5f;
     float _speed = 3f;
     int _amplitude = 1;
 
