@@ -8,6 +8,9 @@ public class Boss : SingletonGeneric<Boss>
     float _speed = 3f;
     int _amplitude = 1; 
 
+    [SerializeField]
+    GameObject _explosionPrefab;
+
     void Start()
     {
         _guns = transform.GetComponentsInChildren<BossGun>();
@@ -45,11 +48,11 @@ public class Boss : SingletonGeneric<Boss>
     {
         if(collision.CompareTag("Missile"))
         {
-            Damage(2);
+            Damage(5);
         }
         if(collision.CompareTag("Laser"))
         {
-            Damage(5);
+            Damage(2);
         }
     }
 
@@ -57,10 +60,13 @@ public class Boss : SingletonGeneric<Boss>
     {
         BossHealthSlider.Instance.DecreaseSliderValue(damage);
 
-        if(BossHealthSlider.Instance._currentHealth < 0)
+        if(BossHealthSlider.Instance._currentHealth <= 0)
         {
+            Debug.Log("Health empty");
             BossHealthSlider.Instance._currentHealth = 0;
+            Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
+            UIManager.Instance.GameCompleted();
         }
     }
 

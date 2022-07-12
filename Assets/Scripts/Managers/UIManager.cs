@@ -22,6 +22,8 @@ public class UIManager : SingletonGeneric<UIManager>
     private CanvasRenderer _achievementPanel;
     [SerializeField]
     private TextMeshProUGUI _waveNumberText;
+    [SerializeField]
+    private TextMeshProUGUI _gameCompleteText;
 
 
     [SerializeField]
@@ -137,5 +139,17 @@ public class UIManager : SingletonGeneric<UIManager>
     {
         yield return new WaitForSeconds(5.0f);
         _achievementPanel.gameObject.SetActive(false);
+    }
+
+    public void GameCompleted()
+    {
+        _gameCompleteText.gameObject.SetActive(true);
+        StartCoroutine(GameEnd());
+    }
+
+    IEnumerator GameEnd()
+    {
+        yield return new WaitForSeconds(5.0f);
+        SceneManager.LoadScene("Main_Menu");
     }
 }
