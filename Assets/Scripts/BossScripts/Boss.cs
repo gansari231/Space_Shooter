@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Boss : SingletonGeneric<Boss>
@@ -8,11 +6,13 @@ public class Boss : SingletonGeneric<Boss>
     float _canFire = -1;
     float _fireRate = 2.5f;
     float _speed = 3f;
-    int _amplitude = 1;
+    int _amplitude = 1; 
 
     void Start()
     {
         _guns = transform.GetComponentsInChildren<BossGun>();
+        BossHealthSlider.Instance._bossHealthSlider.gameObject.SetActive(true);
+        BossHealthSlider.Instance._sliderText.gameObject.SetActive(true);
     }
 
     void Update()
@@ -40,4 +40,29 @@ public class Boss : SingletonGeneric<Boss>
             gun.Shoot();
         }
     }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Missile"))
+        {
+            Damage(2);
+        }
+        if(collision.CompareTag("Laser"))
+        {
+            Damage(5);
+        }
+    }
+
+    void Damage(int damage)
+    {
+        BossHealthSlider.Instance.DecreaseSliderValue(damage);
+
+        if(BossHealthSlider.Instance._currentHealth < 0)
+        {
+            BossHealthSlider.Instance._currentHealth = 0;
+            Destroy(this.gameObject);
+        }
+    }
+
+    
 }

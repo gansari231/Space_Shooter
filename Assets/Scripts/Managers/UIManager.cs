@@ -7,17 +7,17 @@ using TMPro;
 public class UIManager : SingletonGeneric<UIManager>
 {
     [SerializeField]
-    private Text _scoreText;
+    private TextMeshProUGUI _scoreText;
     [SerializeField]
-    private Text _highScoreText;
+    private TextMeshProUGUI _highScoreText;
     [SerializeField]
-    private Text _gameOverText;
+    private TextMeshProUGUI _gameOverText;
     [SerializeField]
-    private Text _restartGameText;
+    private TextMeshProUGUI _restartGameText;
     [SerializeField]
-    private Text _achievementName;
+    private TextMeshProUGUI _achievementName;
     [SerializeField]
-    private Text _achievementInfo;
+    private TextMeshProUGUI _achievementInfo;
     [SerializeField]
     private CanvasRenderer _achievementPanel;
     [SerializeField]
@@ -67,7 +67,7 @@ public class UIManager : SingletonGeneric<UIManager>
 
     public void UpdateWavetext(int waveNumber)
     {
-        _waveNumberText.text = "Wave " + waveNumber;
+        _waveNumberText.text = "W A V E " + waveNumber;
         _waveNumberText.gameObject.SetActive(true);
         StartCoroutine(DisableWavetext());
     }
