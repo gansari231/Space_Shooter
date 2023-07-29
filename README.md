@@ -1,6 +1,7 @@
 Space Shooter Pro Using Unity3d
 
 - Remade arcade asteroid shooter using Unity C# and used MVC for managing all operations related to and for Player.
+- Used wave system for increasing player interactiveness in the game.
 - Usage of Singleton design pattern for in-game Managers and Player.
 - Usage of Object Pooling for managing lasers used in the game.
 - Introduced Achievement System using Observer pattern to make game more playable and interesting.
